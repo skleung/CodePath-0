@@ -29,6 +29,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        println("first time")
+        var defaults = NSUserDefaults.standardUserDefaults()
+        tipControl.selectedSegmentIndex = defaults.integerForKey("default_tip_index")
+        numPeople.selectedSegmentIndex = defaults.integerForKey("default_num_people_index")
+        onEditingChanged(totalLabel)
+    }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         var tipPercentages = [0.18, 0.2, 0.22]
